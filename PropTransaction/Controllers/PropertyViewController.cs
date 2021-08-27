@@ -14,13 +14,13 @@ namespace PropTransaction.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PropertyController : Controller
+    public class PropertyViewController : Controller
     {
         private readonly string connstr = @"DataSource=.\Resources\Properties.db;Version=3;";
 
-        private readonly ILogger<PropertyController> _logger;
+        private readonly ILogger<PropertyViewController> _logger;
 
-        public PropertyController(ILogger<PropertyController> logger)
+        public PropertyViewController(ILogger<PropertyViewController> logger)
         {
             _logger = logger;
         }
