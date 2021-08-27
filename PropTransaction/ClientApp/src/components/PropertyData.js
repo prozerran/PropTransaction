@@ -47,7 +47,7 @@ export class PropertyData extends Component {
     return (
       <div>
         <h1 id="tabelLabel" >Property Data</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <p>Property Data Page.</p>
         {contents}
       </div>
     );
