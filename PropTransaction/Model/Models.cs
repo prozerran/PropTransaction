@@ -16,4 +16,13 @@ namespace PropTransaction.Models
         public string Name { get; set; }
         public string Password { get; set; }
     }
+
+    public class Property
+    {
+        public int PropertyId { get; set; }
+        public string PropertyName { get; set; }
+        public bool IsAvaliable { get; set; }
+        public decimal SalePrice { get; set; }
+        public decimal LeasePrice { get; set; }
+    }
 }

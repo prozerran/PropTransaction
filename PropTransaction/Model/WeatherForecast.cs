@@ -1,6 +1,6 @@
 using System;
 
-namespace PropTransaction
+namespace PropTransaction.Models
 {
     public class WeatherForecast
     {
