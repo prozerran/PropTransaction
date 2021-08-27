@@ -28,6 +28,11 @@ namespace WebApiSwagger
         {
 
             services.AddControllersWithViews();
+			
+			// Add filtering globally, [USE THIS IF YOU WANT FILTERING APPLIED GLOBALLY, FORGET ABOVE]
+            //services.AddControllers(options => options.Filters.Add(new HttpActionFilter()));
+            //services.AddControllers(options => options.Filters.Add(new HttpExceptionFilter()));
+            //services.AddControllers(options => options.Filters.Add(new HttpAuthroizationFilter()));
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -64,7 +69,8 @@ namespace WebApiSwagger
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
