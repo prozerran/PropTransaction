@@ -28,5 +28,43 @@ namespace PropTransaction.Controllers
                 return resultset.ToList();
             }
         }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Property prop)
+        {
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                conn.Execute("INSERT INTO Property (PropertyName, Bedroom, IsAvaliable, SalePrice, LeasePrice) " +
+                     "VALUES (@PropertyName, @Bedroom, @IsAvaliable, @SalePrice, @LeasePrice)", prop);
+            }
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{propId}")]
+        public IActionResult Delete(int propId)
+        {
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                conn.Execute($"DELETE FROM Property WHERE PropertyId = {propId}");
+            }
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult Put([FromBody] Property prop)
+        {
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                conn.Execute("UPDATE Property SET " +
+                    "PropertyName = @PropertyName, " +
+                    "Bedroom = @Bedroom, " +
+                    "IsAvaliable = @IsAvaliable, " +
+                    "SalePrice = @SalePrice, " +
+                    "LeasePrice = @LeasePrice " +
+                    "WHERE PropertyId = @PropertyId", prop);
+            }
+            return Ok();
+        }
     }
 }

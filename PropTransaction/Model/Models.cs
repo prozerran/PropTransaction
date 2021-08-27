@@ -1,5 +1,6 @@
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace PropTransaction.Models
 {
@@ -19,7 +20,6 @@ namespace PropTransaction.Models
 
     public class Property
     {
-        public int Id { get; set; }
         public int PropertyId { get; set; }
         public string PropertyName { get; set; }
         public int Bedroom { get; set; }
