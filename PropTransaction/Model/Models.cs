@@ -19,8 +19,10 @@ namespace PropTransaction.Models
 
     public class Property
     {
+        public int Id { get; set; }
         public int PropertyId { get; set; }
         public string PropertyName { get; set; }
+        public int Bedroom { get; set; }
         public bool IsAvaliable { get; set; }
         public decimal SalePrice { get; set; }
         public decimal LeasePrice { get; set; }

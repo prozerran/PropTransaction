@@ -19,6 +19,7 @@ export class PropertyData extends Component {
           <tr>
             <th>PropertyId</th>
             <th>PropertyName</th>
+            <th>Bedroom</th>
             <th>IsAvaliable</th>
             <th>SalePrice</th>
             <th>LeasePrice</th>
@@ -29,6 +30,7 @@ export class PropertyData extends Component {
               <tr key={forecast.propertyId}>
                   <td>{forecast.propertyId}</td>
                   <td>{forecast.propertyName}</td>
+                  <td>{forecast.bedroom}</td>
                   <td>{forecast.isAvaliable}</td>
                   <td>{forecast.salePrice}</td>
                   <td>{forecast.leasePrice}</td>
