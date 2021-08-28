@@ -20,7 +20,7 @@ namespace PropTransaction.Controllers
         public LoginController(ILogger<LoginController> logger) : base(logger)
         { }
 
-        // Adds items to table
+        // Login
         [HttpPost]
         public IActionResult Post([FromBody] Login login)
         {
@@ -37,13 +37,63 @@ namespace PropTransaction.Controllers
 
                     if (record.Password.Equals(hashedPass))
                     {
+                        // logout previous login, kickout previous session
+                        Delete(record.Id);
+
                         // password check ok, return a new session of user
-                        var guid = Guid.NewGuid();
-                        return Ok(new Session { SessionId = guid.ToString() });
+                        var session = new Session {
+                            UserId = record.Id,
+                            SessionId = Guid.NewGuid().ToString()
+                        };
+
+                        // Add the new Session
+                        InsertSession(session);
+                        return Ok(session);
                     }
                 }
             }
             return Forbid();
         }
+
+        // Logout
+        [HttpDelete]
+        [Route("{userId}")]
+        public IActionResult Delete(int userId)
+        {
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                conn.Execute($"DELETE FROM Session WHERE UserId = {userId}");
+            }
+            return Ok();
+        }
+
+        // IsAdmin
+        [HttpGet]
+        [Route("{userId}")]
+        public IActionResult Get(int userId)
+        {
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                var sql = string.Format($"SELECT * FROM User WHERE Id = {userId}");
+
+                var result = conn.Query<Registry>(sql, new DynamicParameters());
+                var record = result.FirstOrDefault(x => x.Id == userId);
+
+                if (record != null) {
+                    return Ok(record.IsAdmin);
+                }
+            }
+            return BadRequest("No User Found");
+        }
+
+        #region Private Methods
+        private void InsertSession(Session session)
+        {
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                conn.Execute("INSERT INTO Session (UserId, SessionId) VALUES (@UserId, @SessionId)", session);
+            }
+        }
+        #endregion
     }
 }
