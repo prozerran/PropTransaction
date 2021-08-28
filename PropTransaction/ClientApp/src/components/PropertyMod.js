@@ -5,9 +5,16 @@ export class PropertyMod extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { propertyId: '', propertyName: '' };
+        this.state = { propertyId: '', propertyName: '', bedroom: 1, isAvaliable: true, salePrice: '', leasePrice: '' };
 
-        this.handleAddChange = this.handleAddChange.bind(this);
+        // properties change
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleRoomChange = this.handleRoomChange.bind(this);
+        this.handleAvalChange = this.handleAvalChange.bind(this);
+        this.handleSaleChange = this.handleSaleChange.bind(this);
+        this.handleRentChange = this.handleRentChange.bind(this);
+
+        // del and submits
         this.handleAddSubmit = this.handleAddSubmit.bind(this);
         this.handleDelChange = this.handleDelChange.bind(this);
         this.handleDelSubmit = this.handleDelSubmit.bind(this);
@@ -17,8 +24,26 @@ export class PropertyMod extends Component {
         //this.handlePropertyMod();
     }
 
-    handleAddChange(event) {
+    handleNameChange(event) {
         this.setState({ propertyName: event.target.value });
+    }
+
+    handleRoomChange(event) {
+        this.setState({ bedroom: event.target.value });
+    }
+
+    handleAvalChange(event) {
+        let boolValue = event.target.value;
+        boolValue = JSON.parse(boolValue);
+        this.setState({ isAvaliable: boolValue });
+    }
+
+    handleSaleChange(event) {
+        this.setState({ salePrice: event.target.value });
+    }
+
+    handleRentChange(event) {
+        this.setState({ leasePrice: event.target.value });
     }
 
     handleDelChange(event) {
@@ -31,10 +56,10 @@ export class PropertyMod extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 PropertyName: this.state.propertyName,
-                Bedroom: 6,
-                IsAvaliable: true,
-                SalePrice: 56,
-                LeasePrice: 17000
+                Bedroom: this.state.bedroom,
+                IsAvaliable: this.state.isAvaliable,
+                SalePrice: this.state.salePrice,
+                LeasePrice: this.state.leasePrice
             })
         };
         await fetch('/PropertyMod', addReq);
@@ -53,7 +78,18 @@ export class PropertyMod extends Component {
                 <h3>Add Property</h3>
                 <form onSubmit={this.handleAddSubmit}>
                     <label>Property Name</label>
-                    <input type="text" value={this.state.propertyName} onChange={this.handleAddChange} /><br />
+                    <input type="text" value={this.state.propertyName} onChange={this.handleNameChange} /><br />
+                    <label>Bedrooms</label>
+                    <input type="number" value={this.state.bedroom} onChange={this.handleRoomChange} /><br />
+                    <label>Is Avaliable</label>
+                    <select value={this.state.isAvaliable} onChange={this.handleAvalChange}>
+                        <option value="true" selected>Yes</option>
+                        <option value="false">No</option>
+                    </select><br />
+                    <label>Sale Price</label>
+                    <input type="number" value={this.state.salePrice} onChange={this.handleSaleChange} /><br />
+                    <label>Monthly Lease</label>
+                    <input type="number" value={this.state.leasePrice} onChange={this.handleRentChange} /><br />
                     <input type="submit" value="Add" />
                 </form>
 
