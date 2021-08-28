@@ -1,21 +1,18 @@
 
 using System;
-using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+// TODO: separate into individual files
 
 namespace PropTransaction.Models
 {
-    public class HomePage
+    public class Registry
     {
-        public DateTime Date { get; set; }
-        public string Title { get; set; }
-        public string IndexPage { get; set; }
-        public string Version { get; set; }
-    }
-
-    public class ReqMessage
-    {
-        public string Name { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsAdmin { get; set; }
     }
 
     public class Property

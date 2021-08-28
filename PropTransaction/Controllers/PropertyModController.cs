@@ -29,6 +29,7 @@ namespace PropTransaction.Controllers
             }
         }
 
+        // Adds items to table
         [HttpPost]
         public IActionResult Post([FromBody] Property prop)
         {
@@ -40,6 +41,7 @@ namespace PropTransaction.Controllers
             return Ok();
         }
 
+        // Deletes items from table
         [HttpDelete]
         [Route("{propId}")]
         public IActionResult Delete(int propId)
@@ -51,6 +53,7 @@ namespace PropTransaction.Controllers
             return Ok();
         }
 
+        // Updates items in table
         [HttpPut]
         public IActionResult Put([FromBody] Property prop)
         {
