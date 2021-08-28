@@ -1,50 +1,57 @@
-# Crypto Sentiment Indicator Mini Project
+# CRUD example between C# .NET 5 WebApi and ReactJS
 
-This project determines the overall crypto sentiment.
-It compares the US market to Asian markets for sentiment.
+This project is a demonstration on how to write both a frontend and backend and the communcation between the two sides.
+Both stack are meant to be separate and so is decoupled from each other, so that differernt backend/frontend technologies 
+can be used to implement instead of what I did here. 
 
-It can potentially be used for arbitration between exchanges since either markets are net buyers or net sellers,
-thus, you can profit from the spread and differences in price.
+## Frontend Stack
 
-Overall, it determines the sentiment between the two continents, based on the Korean kimchi premium indicator.
-If the kimchi premium is high, then there is possible euphoria in the Asian markets, where as if there is a discount,
-then it could be a good buying opportunity.
+- ReactJS and some Javascript.
+- Some Bootstrap for layout abd styling
+- Requires Node.js to run, so npm and it's dependencies need to be installed
+- Basic HTML/CSS
 
-## Available Sources
+### Backend Stack
 
-This project mostly gets its data from:
-[Coinbase](https://pro.coinbase.com/trade/BTC-USD)
-[Bithumb](https://en.bithumb.com/trade/order/BTC_KRW)
+- C# .NET 5 WebApi/MVC design
+- Swagger for development and testing
+- Dapper for connecting to DB instead of Entity Frameworks
+- SQLite instead of SQL Server for simplicity
+- Generalized code to refrain from depending on too much MS stack, such as SQL Server/EF
+
+## Project Outline
+
+- Allow registration of user by email
+- Login process
+- Simple CRUD for Properties and Transaction page
+
+## Additional Notes
+
+- Basic CRUD example
+- Session management of logged in user
+- Filterings are defined/used such as Actions/Authentication/Exception handling
+- No TDD unit code exist yet, probably will add later, refer to Swagger for testing ATM
+- No exception handling is applied yet, still in development so I can see errors in Swagger
+- Serilog has replaced the standing MS logging in the controllers
+- Not completely finished, frontend still work in progress
 
 
-### Project 
+### How to Access
 
-Compile the solution and run it!
-That's all.
+- Just compile, and run, all dependencies should be automatically downloaded
+- For testing backend WebApi, please access using Swagger or Postman
+	- https://localhost:44334/swagger/index.html
 
-All dependencies will resolve itself.
+- For testing from frontend, please access the site root page
+	- https://localhost:44334/index.html
 
-## Learn More
 
-You can learn more about crytos here:
-[Coindesk](https://www.coindesk.com/)
-[CoinMarketCap](https://coinmarketcap.com/)
+### Comments
 
-### Some Popular Exchanges
+Finally, this is just a simple CRUD example between frontend and backend web development.
+Use the code at your own risk, modify in any way you see fit.
+I hope this will contribute to your knowledge and hopefully provide information on how general web development works.
 
-[Coinbase](https://pro.coinbase.com/trade/BTC-USD)
-[Binance](https://www.binance.com/en/trade/BTC_USDT?layout=pro&theme=dark&type=spot)
-[Bitfinex](https://trading.bitfinex.com/t?type=exchange)
-[Bitmex](https://www.bitmex.com/app/trade/XBTUSD)
-[Bybit](https://www.bybit.com/trade/inverse/BTCUSD)
-[Blockchain.com](https://exchange.blockchain.com/trade)
-[Crypto.com](https://crypto.com/exchange/trade/spot/CRO_BTC)
-[Kraken](https://demo-futures.kraken.com/futures/PI_XBTUSD)
-[Bithumb](https://en.bithumb.com/trade/order/BTC_KRW)
-
-### OTC Markets
-
-[LocalBitcoins](https://localbitcoins.com/)
 
 ### Donation
 
