@@ -6,13 +6,26 @@ using System.ComponentModel;
 
 namespace PropTransaction.Models
 {
-    public class Registry
+    public class Login
     {
         public string Email { get; set; }
         public string Password { get; set; }
+    }
+
+    public class Registry : Login
+    {
+        public int Id { get; set; }
 
         [DefaultValue(false)]
         public bool IsAdmin { get; set; }
+    }
+
+    public class Session
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string SessionId { get; set; }
+        public DateTime Update_Time { get; set; }
     }
 
     public class Property
