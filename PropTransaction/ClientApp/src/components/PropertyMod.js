@@ -5,35 +5,35 @@ export class PropertyMod extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: 'The House' };
+        this.state = { propertyName: '' };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleAdd = this.handleAdd.bind(this);
+        this.handleAddChange = this.handleAddChange.bind(this);
+        this.handleAddSubmit = this.handleAddSubmit.bind(this);
     }
 
     componentDidMount() {
         //this.populatePropertyMod();
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    handleAddChange(event) {
+        this.setState({ propertyName: event.target.value });
     }
 
-    async handleAdd(event) {
+    async handleAddSubmit(event) {
 
         const addReq = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ PropertyName: this.state.value, Bedroom: 6, IsAvaliable: true, SalePrice: 56, LeasePrice: 17000 })
+            body: JSON.stringify({ PropertyName: this.state.propertyName, Bedroom: 6, IsAvaliable: true, SalePrice: 56, LeasePrice: 17000 })
         };
         await fetch('/PropertyMod', addReq);
     }
 
     render() {
         return (
-            <form onSubmit={this.handleAdd}>
+            <form onSubmit={this.handleAddSubmit}>
                 <label>Property Name</label>
-                <input type="text" value={this.state.value} onChange={this.handleChange} /><br />
+                <input type="text" value={this.state.propertyName} onChange={this.handleAddChange} /><br />
                 <input type="submit" value="Add" />
             </form>
         );
