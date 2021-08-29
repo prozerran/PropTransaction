@@ -50,6 +50,16 @@ can be used to implement instead of what I did here.
 	- https://localhost:44334/index.html
 
 
+## Known Issues
+
+- Frontend responsiveness is rather slow
+- May have frequent popup due to browser alerts or JS alerts
+- Editing on frontend not working yet, please use Swagger
+- Long is used as Transaction DateTime, should refactor to use DateTime
+- Many various bugs and issues on frontend
+- Probably unable to properly handle empty tables or bad data
+
+
 ## Comments
 
 Finally, this is just a simple CRUD example between frontend and backend web development.

@@ -42,6 +42,12 @@ export class NavMenu extends Component {
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/property-view">Prop View</NavLink>
                                 </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/transaction-mod">Trans Mod</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/transaction-view">Trans View</NavLink>
+                                </NavItem>
                             </ul>
                         </Collapse>
                     </Container>

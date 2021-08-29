@@ -46,4 +46,12 @@ namespace PropTransaction.Models
         public decimal SalePrice { get; set; }
         public decimal LeasePrice { get; set; }
     }
+
+    public class Transaction
+    {
+        public int TransactionId { get; set; }
+        public int PropertyId { get; set; }
+        public int UserId { get; set; }
+        public long TransactionDate { get; set; }
+    }
 }
