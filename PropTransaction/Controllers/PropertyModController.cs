@@ -37,10 +37,14 @@ namespace PropTransaction.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Property prop)
         {
+            var sessionId = Request.Headers["Authorization"];
+            var sv = LoginController.GetSessionView(sessionId);
+            prop.UserId = sv.UserId;
+
             using (var conn = new SQLiteConnection(connstr))
             {
-                conn.Execute("INSERT INTO Property (PropertyName, Bedroom, IsAvaliable, SalePrice, LeasePrice) " +
-                     "VALUES (@PropertyName, @Bedroom, @IsAvaliable, @SalePrice, @LeasePrice)", prop);
+                conn.Execute("INSERT INTO Property (PropertyName, UserId, Bedroom, IsAvaliable, SalePrice, LeasePrice) " +
+                     "VALUES (@PropertyName, @UserId, @Bedroom, @IsAvaliable, @SalePrice, @LeasePrice)", prop);
             }
             return Ok();
         }

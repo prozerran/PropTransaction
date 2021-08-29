@@ -31,7 +31,7 @@ namespace PropTransaction.Controllers
 
             if (!sv.IsAdmin)
             {
-                sql = string.Format($"SELECT * FROM Property");
+                sql = string.Format($"SELECT * FROM Property WHERE UserId = {sv.UserId}");
             }
 
             using (var conn = new SQLiteConnection(connstr))

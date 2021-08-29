@@ -39,6 +39,7 @@ namespace PropTransaction.Models
     public class Property
     {
         public int PropertyId { get; set; }
+        public int UserId { get; set; }
         public string PropertyName { get; set; }
         public int Bedroom { get; set; }
         public bool IsAvaliable { get; set; }
