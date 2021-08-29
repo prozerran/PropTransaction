@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PropTransaction.Filters;
 using PropTransaction.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ using System.Threading.Tasks;
 namespace PropTransaction.Controllers
 {
     [ApiController]
+    [HttpActionFilter]
+    [HttpExceptionFilter]
+    [HttpAuthroizationFilter]
     [Route("[controller]")]
     public class PropertyModController : BaseController
     {

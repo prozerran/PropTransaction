@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace PropTransaction.Controllers
 {
     [ApiController]
+    [HttpAuthroizationFilter]
     [Route("[controller]")]
     public class PropertyViewController : BaseController
     {
@@ -21,7 +22,6 @@ namespace PropTransaction.Controllers
         { }
 
         [HttpGet]
-        [HttpAuthroizationFilter]
         public IEnumerable<Property> Get()
         {
             using (var conn = new SQLiteConnection(connstr))

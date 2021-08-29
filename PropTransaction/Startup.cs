@@ -15,25 +15,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using SeriLog = Serilog.Log;
-
 namespace PropTransaction
 {
     public class Startup
     {
-        public static readonly string LogPath = AppDomain.CurrentDomain.BaseDirectory + @"\Logs\PTrans_.log";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            // Initiliaze Serilog
-            SeriLog.Logger = new LoggerConfiguration()
-              .MinimumLevel.Verbose()
-              .Filter.ByExcluding((le) => le.Level == LogEventLevel.Debug)
-              .Filter.ByExcluding((le) => le.Level == LogEventLevel.Verbose)
-              .WriteTo.File(LogPath, rollingInterval: RollingInterval.Day)
-              .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }

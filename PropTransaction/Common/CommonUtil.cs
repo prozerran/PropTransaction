@@ -8,6 +8,10 @@ namespace PropTransaction.Common
 {
     public static class CommonUtil
     {
+		public static readonly string LogPath = @".\Logs\PTrans_.log";
+
+		public static readonly string DBPath = @"DataSource=.\Resources\Properties.db;Version=3;";
+
 		public static string GetHashedString(string input)
 		{
 			// Use input string to calculate MD5 hash

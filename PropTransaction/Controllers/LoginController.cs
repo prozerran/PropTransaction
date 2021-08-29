@@ -15,6 +15,7 @@ using PropTransaction.Filters;
 namespace PropTransaction.Controllers
 {
     [ApiController]
+    [HttpExceptionFilter]
     [Route("[controller]")]
     public class LoginController : BaseController
     {
