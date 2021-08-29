@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PropTransaction.Filters;
 using PropTransaction.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace PropTransaction.Controllers
         { }
 
         [HttpGet]
+        [HttpAuthroizationFilter]
         public IEnumerable<Property> Get()
         {
             using (var conn = new SQLiteConnection(connstr))

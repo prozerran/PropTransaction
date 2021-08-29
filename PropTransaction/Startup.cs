@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PropTransaction.Filters;
 using Serilog;
 using Serilog.Events;
 using System;
@@ -56,6 +57,34 @@ namespace PropTransaction
 			services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiSwagger", Version = "v1" });
+
+                c.AddSecurityDefinition("SessionId", new OpenApiSecurityScheme
+                {
+                    Description = "Enter SessionId",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "SessionId"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "SessionId"
+                            },
+                            Scheme = "oauth2",
+                            Name = "SessionId",
+                            In = ParameterLocation.Header,
+
+                        },
+                        new List<string>()
+                    }
+                });
             });
         }
 

@@ -32,6 +32,7 @@ can be used to implement instead of what I did here.
 - Filterings are defined/used such as Actions/Authentication/Exception handling
 - No TDD unit code exist yet, probably will add later, refer to Swagger for testing ATM
 - No exception handling is applied yet, still in development so I can see errors in Swagger
+- No business layer or DAL separate library for simplicity
 - Serilog has replaced the standing MS logging in the controllers
 - Not completely finished, frontend still work in progress
 	- Yes, front end is very ugly
@@ -55,7 +56,7 @@ Use the code at your own risk, modify in any way you see fit.
 I hope this will contribute to your knowledge and hopefully provide information on how general web development works.
 
 
-## Donation
+## Donations
 
 BTC:  12SH2Z2VvcTRTgZuhxV7VBkq3DXzThRtYN  
 ETH:  0xe673f79da7f7f5497dba7182f5c272274299c235  

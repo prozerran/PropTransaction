@@ -20,7 +20,7 @@ namespace PropTransaction.Filters
     {
         public override void OnAuthorization(AuthorizationFilterContext context)
         {
-            // check authroization here
+            var sessionId = context.HttpContext.Request.Headers["Authorization"];
         }
     }
 }
