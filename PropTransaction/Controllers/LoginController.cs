@@ -103,15 +103,28 @@ namespace PropTransaction.Controllers
 
             using (var conn = new SQLiteConnection(connstr))
             {
-                var sql = string.Format($"SELECT * FROM Session WHERE SessionId = '{sessionId}'");
+                var sql = string.Format($"SELECT * FROM Session_View WHERE SessionId = '{sessionId}'");
 
-                var result = conn.Query<Session>(sql, new DynamicParameters());
+                var result = conn.Query<SessionView>(sql, new DynamicParameters());
                 var record = result.FirstOrDefault(x => x.SessionId == sessionId);
 
                 if (record != null)
                     return true;
             }
             return false;
+        }
+
+        public static SessionView GetSessionView(string sessionId)
+        {
+            var connstr = CommonUtil.DBPath;
+
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                var sql = string.Format($"SELECT * FROM Session_View WHERE SessionId = '{sessionId}'");
+
+                var result = conn.Query<SessionView>(sql, new DynamicParameters());
+                return result.FirstOrDefault(x => x.SessionId == sessionId);
+            }
         }
         #endregion
     }

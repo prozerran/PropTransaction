@@ -28,6 +28,14 @@ namespace PropTransaction.Models
         public DateTime Update_Time { get; set; }
     }
 
+    public class SessionView
+    {
+        public int UserId { get; set; }
+        public string Email { get; set; }
+        public string SessionId { get; set; }
+        public bool IsAdmin { get; set; }
+    }
+
     public class Property
     {
         public int PropertyId { get; set; }
