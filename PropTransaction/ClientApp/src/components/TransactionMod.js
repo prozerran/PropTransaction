@@ -101,8 +101,8 @@ export class TransactionMod extends Component {
                 <h3>Del Transaction</h3><br />
                 <label>This really should be a drop down combo box</label>
                 <form onSubmit={this.handleDelSubmit}>
-                    <label>Property Id</label>
-                    <input type="text" value={this.state.transactionId} onChange={this.handleDelChange} /><br />
+                    <label>Transaction Id</label>
+                    <input type="number" value={this.state.transactionId} onChange={this.handleDelChange} /><br />
                     <input type="submit" value="Del" />
                 </form>
             </div>

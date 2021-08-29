@@ -51,12 +51,12 @@ namespace PropTransaction.Controllers
 
         // Deletes items from table
         [HttpDelete]
-        [Route("{propId}")]
+        [Route("{transId}")]
         public IActionResult Delete(int transId)
         {
             using (var conn = new SQLiteConnection(connstr))
             {
-                conn.Execute($"DELETE FROM 'Transaction' WHERE PropertyId = {transId}");
+                conn.Execute($"DELETE FROM 'Transaction' WHERE TransactionId = {transId}");
             }
             return Ok();
         }
