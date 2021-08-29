@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export class Login extends Component {
     static displayName = Login.name;
-    static sessionId = null;
+    static sessionId = cookies;
 
     constructor(props) {
         super(props);
@@ -44,8 +47,8 @@ export class Login extends Component {
         else {
             const jsonstr = await response.json();
 
-            // No idea how to set sessionId globally so it can be sent to Web API
-            //sessionId = jsonstr.sessionId;
+            // lets try to use cookies to set global sessionId
+            cookies.set('sessionId', jsonstr.sessionId, { path: '/' });
 
             alert("LOGIN OK");
         }

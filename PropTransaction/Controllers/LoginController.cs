@@ -96,6 +96,23 @@ namespace PropTransaction.Controllers
                 conn.Execute("INSERT INTO Session (UserId, SessionId) VALUES (@UserId, @SessionId)", session);
             }
         }
+
+        public static bool IsSessionValid(string sessionId)
+        {
+            var connstr = CommonUtil.DBPath;
+
+            using (var conn = new SQLiteConnection(connstr))
+            {
+                var sql = string.Format($"SELECT * FROM Session WHERE SessionId = '{sessionId}'");
+
+                var result = conn.Query<Session>(sql, new DynamicParameters());
+                var record = result.FirstOrDefault(x => x.SessionId == sessionId);
+
+                if (record != null)
+                    return true;
+            }
+            return false;
+        }
         #endregion
     }
 }

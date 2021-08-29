@@ -9,6 +9,7 @@ can be used to implement instead of what I did here.
 - ReactJS and some Javascript.
 - Some Bootstrap for layout abd styling
 - Requires Node.js to run, so npm and it's dependencies need to be installed
+- Uses React Universal Cookies
 - Basic HTML/CSS
 
 ## Backend Stack

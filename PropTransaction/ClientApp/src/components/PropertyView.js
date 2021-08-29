@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Login } from './Login';
 
 export class PropertyView extends Component {
     static displayName = PropertyView.name;
@@ -56,8 +57,22 @@ export class PropertyView extends Component {
     }
 
     async populatePropertyView() {
-        const response = await fetch('propertyview');
-        const data = await response.json();
-        this.setState({ items: data, loading: false });
+
+        var sessionId = Login.sessionId.get('sessionId');
+
+        const req = {
+            method: 'GET',
+            headers: { 'Authorization': sessionId }
+        };
+
+        const response = await fetch('propertyview', req);
+
+        if (response.ok) {
+            const data = await response.json();
+            this.setState({ items: data, loading: false });
+        }
+        else {
+            alert("Please log in first.");
+        }
     }
 }

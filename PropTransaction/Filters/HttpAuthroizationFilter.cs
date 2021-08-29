@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PropTransaction.Model;
+using PropTransaction.Controllers;
 
 // https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-5.0
 
@@ -21,6 +22,11 @@ namespace PropTransaction.Filters
         public override void OnAuthorization(AuthorizationFilterContext context)
         {
             var sessionId = context.HttpContext.Request.Headers["Authorization"];
+            var valid = LoginController.IsSessionValid(sessionId);
+
+            if (valid) return;
+
+            context.Result = new ForbidResult();
         }
     }
 }
